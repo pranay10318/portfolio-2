@@ -12,6 +12,10 @@ After the first deploy, the site is at:
 
 Hero and header use `assets/nextgen-logo.png` (Next Gen Digital mark).
 
+## Contact details
+
+Edit **`js/contact-config.js`** only — WhatsApp, phone, and email links update everywhere automatically.
+
 ## Local preview
 
 ```bash

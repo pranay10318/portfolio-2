@@ -1,7 +1,32 @@
 (function () {
   const TALLY_URL =
     "https://tally.yuki.sh/hits/pranay10318/portfolio-varsha-nextgen.json";
-  const EMAIL = "pothugantivarsha101@gmail.com";
+  const C = window.NGD_CONTACT || {
+    email: "pothugantivarsha101@gmail.com",
+    phoneE164: "918790084139",
+    phoneDisplay: "+91 87900 84139",
+    whatsappUrl: "https://wa.me/918790084139",
+    telUrl: "tel:+918790084139",
+    mailtoUrl: "mailto:pothugantivarsha101@gmail.com",
+  };
+
+  function applyContactLinks() {
+    document.querySelectorAll(".ngd-whatsapp").forEach((el) => {
+      el.href = C.whatsappUrl;
+    });
+    document.querySelectorAll(".ngd-tel").forEach((el) => {
+      el.href = C.telUrl;
+    });
+    document.querySelectorAll(".ngd-mailto").forEach((el) => {
+      el.href = C.mailtoUrl;
+    });
+    document.querySelectorAll(".ngd-phone-display").forEach((el) => {
+      el.textContent = C.phoneDisplay;
+    });
+    const emailText = document.getElementById("email-text");
+    if (emailText) emailText.textContent = C.email;
+  }
+  applyContactLinks();
 
   const yearEl = document.getElementById("year");
   if (yearEl) yearEl.textContent = String(new Date().getFullYear());
@@ -29,7 +54,7 @@
 
   const copyEmailBtn = document.getElementById("copy-email");
   if (copyEmailBtn) {
-    copyEmailBtn.addEventListener("click", () => copyText(EMAIL));
+    copyEmailBtn.addEventListener("click", () => copyText(C.email));
   }
 
   const shareBtn = document.getElementById("share-site");
