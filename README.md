@@ -8,13 +8,9 @@ After the first deploy, the site is at:
 
 **https://pranay10318.github.io/portfolio-2/**
 
-## Profile photo
+## Brand logo
 
-Replace or add your friend’s photo at:
-
-`assets/profile.jpg`
-
-(Recommended: square image, at least 640×640 px. The site falls back to `assets/profile.svg` if the JPG is missing.)
+Hero and header use `assets/nextgen-logo.png` (Next Gen Digital mark).
 
 ## Local preview
 
