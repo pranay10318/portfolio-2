@@ -1178,7 +1178,7 @@ a:hover {
   }
 
   .fab-whatsapp {
-    display: grid;
+    display: none;
   }
 
   .site-footer {
@@ -1298,9 +1298,12 @@ a:hover {
 }
 
 @media (min-width: 901px) {
-  .mobile-dock,
-  .fab-whatsapp {
+  .mobile-dock {
     display: none !important;
+  }
+
+  .fab-whatsapp {
+    display: grid;
   }
 
   .back-to-top {

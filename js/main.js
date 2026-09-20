@@ -1,7 +1,7 @@
 (function () {
   const TALLY_URL =
     "https://tally.yuki.sh/hits/pranay10318/portfolio-varsha-nextgen.json";
-  const EMAIL = "pothugantivarsha105@gmail.com";
+  const EMAIL = "pothugantivarsha101@gmail.com";
 
   const yearEl = document.getElementById("year");
   if (yearEl) yearEl.textContent = String(new Date().getFullYear());
@@ -55,6 +55,12 @@
   async function loadVisitorStats() {
     const heroCopy = document.getElementById("visitor-copy");
     const footer = document.getElementById("footer-visitors");
+    if (window.location.protocol === "file:") {
+      const preview = "Live on GitHub Pages — visitor stats appear there";
+      if (heroCopy) heroCopy.textContent = preview;
+      if (footer) footer.textContent = "";
+      return;
+    }
     try {
       const res = await fetch(TALLY_URL, { cache: "no-store" });
       if (!res.ok) throw new Error("bad status");
