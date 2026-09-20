@@ -27,3 +27,7 @@ python3 -m http.server 8080
 ## Stack
 
 HTML, CSS, and vanilla JavaScript — no build step. Deployed via GitHub Actions to GitHub Pages.
+
+## Visitor counter
+
+Page views and unique visitors use the free [Tally API](https://tally.yuki.sh/) (privacy-friendly, no cookies). Counts appear in the hero card and footer.

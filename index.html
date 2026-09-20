@@ -7,7 +7,17 @@
       name="description"
       content="Varsha Pothuganti — Next Gen Digital Marketer. Social media, Canva design, Meta Ads, and content that grows brands."
     />
+    <meta name="theme-color" content="#07070c" />
+    <meta property="og:title" content="Varsha Pothuganti | Next Gen Digital Marketer" />
+    <meta
+      property="og:description"
+      content="Social media marketing, Canva design, reels &amp; Meta Ads — freelance digital marketing from Nizamabad."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://pranay10318.github.io/portfolio-2/" />
+    <meta property="og:image" content="https://pranay10318.github.io/portfolio-2/assets/profile.jpg" />
     <title>Varsha Pothuganti | Digital Marketer &amp; Canva Designer</title>
+    <link rel="preload" href="assets/profile.jpg" as="image" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -18,7 +28,9 @@
     <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
   </head>
   <body>
+    <div class="scroll-progress" id="scroll-progress" aria-hidden="true"></div>
     <div class="noise" aria-hidden="true"></div>
+    <div class="toast-region" id="toast-region" aria-live="polite"></div>
     <header class="site-header" id="top">
       <nav class="nav container" aria-label="Primary">
         <a class="logo" href="#top">
@@ -35,12 +47,13 @@
           <span></span><span></span><span></span>
         </button>
         <ul class="nav-links" id="nav-menu">
-          <li><a href="#home">Home</a></li>
-          <li><a href="#about">About</a></li>
-          <li><a href="#services">Services</a></li>
-          <li><a href="#projects">Projects</a></li>
-          <li><a href="#why-me">Why Me</a></li>
-          <li><a href="#contact" class="nav-cta">Contact</a></li>
+          <li><a href="#home" data-nav="home">Home</a></li>
+          <li><a href="#about" data-nav="about">About</a></li>
+          <li><a href="#services" data-nav="services">Services</a></li>
+          <li><a href="#projects" data-nav="projects">Projects</a></li>
+          <li><a href="#why-me" data-nav="why-me">Why Me</a></li>
+          <li><a href="#faq" data-nav="faq">FAQ</a></li>
+          <li><a href="#contact" class="nav-cta" data-nav="contact">Contact</a></li>
         </ul>
       </nav>
     </header>
@@ -92,6 +105,8 @@
                   width="320"
                   height="320"
                   class="profile-photo"
+                  decoding="async"
+                  fetchpriority="high"
                   onerror="this.src='assets/profile.svg'; this.onerror=null;"
                 />
               </div>
@@ -100,6 +115,10 @@
                 Available for freelance
               </div>
               <p class="profile-tag">Canva · CapCut · Meta Ads</p>
+              <p class="visitor-stats" id="visitor-stats" aria-live="polite">
+                <span class="visitor-dot" aria-hidden="true"></span>
+                <span id="visitor-copy">Loading visitors…</span>
+              </p>
             </div>
           </div>
         </div>
@@ -147,7 +166,52 @@
               <li><strong>Certification</strong> Digital Marketing Certification</li>
               <li><strong>Languages</strong> Telugu &amp; English</li>
             </ul>
+            <div class="skill-bars" aria-label="Core skill focus">
+              <div class="skill-row">
+                <div class="skill-meta"><span>Social Media</span><span>90%</span></div>
+                <div class="skill-track"><div class="skill-fill" data-fill="90"></div></div>
+              </div>
+              <div class="skill-row">
+                <div class="skill-meta"><span>Canva Design</span><span>92%</span></div>
+                <div class="skill-track"><div class="skill-fill" data-fill="92"></div></div>
+              </div>
+              <div class="skill-row">
+                <div class="skill-meta"><span>Video (CapCut)</span><span>85%</span></div>
+                <div class="skill-track"><div class="skill-fill" data-fill="85"></div></div>
+              </div>
+              <div class="skill-row">
+                <div class="skill-meta"><span>Meta Ads</span><span>78%</span></div>
+                <div class="skill-track"><div class="skill-fill" data-fill="78"></div></div>
+              </div>
+            </div>
           </div>
+        </div>
+      </section>
+
+      <section class="section process" id="process">
+        <div class="container">
+          <div class="section-head center reveal">
+            <p class="eyebrow">How I Work</p>
+            <h2>Simple process, strong results</h2>
+            <p class="section-sub">A clear workflow clients love — from idea to published content.</p>
+          </div>
+          <ol class="process-steps reveal">
+            <li>
+              <span class="step-num">01</span>
+              <h3>Discover</h3>
+              <p>Understand your brand, audience, and goals on a quick call or chat.</p>
+            </li>
+            <li>
+              <span class="step-num">02</span>
+              <h3>Design &amp; Create</h3>
+              <p>Posts, reels, and ad creatives in Canva &amp; CapCut — aligned to your vibe.</p>
+            </li>
+            <li>
+              <span class="step-num">03</span>
+              <h3>Launch &amp; Grow</h3>
+              <p>Publish, promote, and refine with Meta Ads and social strategy.</p>
+            </li>
+          </ol>
         </div>
       </section>
 
@@ -215,38 +279,44 @@
               creatives.
             </p>
           </div>
-          <div class="projects-grid">
-            <figure class="project-card reveal">
+          <div class="project-filters reveal" role="tablist" aria-label="Filter projects">
+            <button type="button" class="filter-chip is-active" data-filter="all">All</button>
+            <button type="button" class="filter-chip" data-filter="social">Social</button>
+            <button type="button" class="filter-chip" data-filter="video">Video</button>
+            <button type="button" class="filter-chip" data-filter="ads">Ads</button>
+          </div>
+          <div class="projects-grid" id="projects-grid">
+            <figure class="project-card reveal" data-category="social">
               <div class="project-thumb p1">
                 <span>Social Post</span>
               </div>
               <figcaption>Promotional creatives for local businesses</figcaption>
             </figure>
-            <figure class="project-card reveal delay-1">
+            <figure class="project-card reveal delay-1" data-category="video">
               <div class="project-thumb p2">
                 <span>Instagram Reel</span>
               </div>
               <figcaption>Short-form video content for brand awareness</figcaption>
             </figure>
-            <figure class="project-card reveal delay-2">
+            <figure class="project-card reveal delay-2" data-category="video">
               <div class="project-thumb p3">
                 <span>YouTube Short</span>
               </div>
               <figcaption>Edited clips with CapCut for YouTube</figcaption>
             </figure>
-            <figure class="project-card reveal">
+            <figure class="project-card reveal" data-category="ads">
               <div class="project-thumb p4">
                 <span>Meta Ad</span>
               </div>
               <figcaption>Ad-ready layouts and copy for Meta campaigns</figcaption>
             </figure>
-            <figure class="project-card reveal delay-1">
+            <figure class="project-card reveal delay-1" data-category="social">
               <div class="project-thumb p5">
                 <span>Brand Kit</span>
               </div>
               <figcaption>Canva templates for consistent online branding</figcaption>
             </figure>
-            <figure class="project-card reveal delay-2">
+            <figure class="project-card reveal delay-2" data-category="social">
               <div class="project-thumb p6">
                 <span>Campaign</span>
               </div>
@@ -295,6 +365,42 @@
         </div>
       </section>
 
+      <section class="section faq" id="faq">
+        <div class="container">
+          <div class="section-head center reveal">
+            <p class="eyebrow">FAQ</p>
+            <h2>Questions clients often ask</h2>
+          </div>
+          <div class="faq-list reveal">
+            <details class="faq-item">
+              <summary>What services do you offer?</summary>
+              <p>
+                Social media marketing, Canva graphics, Instagram &amp; YouTube content,
+                short-form video editing, Meta Ads creatives, and content planning.
+              </p>
+            </details>
+            <details class="faq-item">
+              <summary>Do you work with small businesses?</summary>
+              <p>
+                Yes — I love helping local shops, online brands, and startups build a
+                consistent social presence on a friendly freelance budget.
+              </p>
+            </details>
+            <details class="faq-item">
+              <summary>How do we start a project?</summary>
+              <p>
+                Message me on WhatsApp or Instagram with your idea. We'll agree on scope,
+                timeline, and deliverables — then I get creating.
+              </p>
+            </details>
+            <details class="faq-item">
+              <summary>Which languages do you support?</summary>
+              <p>I communicate in Telugu and English for calls, captions, and client updates.</p>
+            </details>
+          </div>
+        </div>
+      </section>
+
       <section class="section contact" id="contact">
         <div class="container contact-grid">
           <div class="section-head reveal">
@@ -324,10 +430,14 @@
               <span class="contact-label">WhatsApp</span>
               <span class="contact-value">+91 88850 07251</span>
             </a>
-            <a class="contact-card" href="mailto:pothugantivarsha105@gmail.com">
+            <div class="contact-card contact-card--email">
               <span class="contact-label">Email</span>
-              <span class="contact-value">pothugantivarsha105@gmail.com</span>
-            </a>
+              <span class="contact-value" id="email-text">pothugantivarsha105@gmail.com</span>
+              <div class="contact-actions">
+                <a class="btn btn-ghost btn-sm" href="mailto:pothugantivarsha105@gmail.com">Send</a>
+                <button type="button" class="btn btn-ghost btn-sm" id="copy-email">Copy</button>
+              </div>
+            </div>
             <a
               class="contact-card"
               href="https://www.youtube.com/@NextGen.digital.official"
@@ -344,10 +454,49 @@
 
     <footer class="site-footer">
       <div class="container footer-inner">
-        <p>© <span id="year"></span> Varsha Pothuganti · Next Gen Digital</p>
-        <a href="#top">Back to top</a>
+        <div class="footer-meta">
+          <p>© <span id="year"></span> Varsha Pothuganti · Next Gen Digital</p>
+          <p class="footer-visitors" id="footer-visitors"></p>
+        </div>
+        <div class="footer-actions">
+          <button type="button" class="btn btn-ghost btn-sm" id="share-site">Share portfolio</button>
+          <a href="#top">Back to top</a>
+        </div>
       </div>
     </footer>
+
+    <a
+      class="fab-whatsapp"
+      href="https://wa.me/918885007251?text=Hi%20Varsha%2C%20I%20saw%20your%20portfolio%20and%20would%20like%20to%20discuss%20a%20project."
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label="Chat on WhatsApp"
+    >
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+        <path
+          d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.435 9.884-9.881 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"
+        />
+      </svg>
+    </a>
+
+    <button type="button" class="back-to-top" id="back-to-top" aria-label="Back to top">
+      ↑
+    </button>
+
+    <nav class="mobile-dock" aria-label="Quick contact">
+      <a href="https://www.instagram.com/next.gen.digital.official/" target="_blank" rel="noopener noreferrer">
+        <span aria-hidden="true">📸</span> Instagram
+      </a>
+      <a
+        class="mobile-dock-primary"
+        href="https://wa.me/918885007251?text=Hi%20Varsha%2C%20I%20saw%20your%20portfolio%20and%20would%20like%20to%20discuss%20a%20project."
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        WhatsApp
+      </a>
+      <a href="#contact"><span aria-hidden="true">✉️</span> Contact</a>
+    </nav>
 
     <script src="js/main.js"></script>
   </body>
